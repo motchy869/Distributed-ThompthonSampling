@@ -1,0 +1,1361 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     60859,       1353]
+NotebookOptionsPosition[     60106,       1333]
+NotebookOutlinePosition[     60477,       1349]
+CellTagsIndexPosition[     60434,       1346]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"\:30c7", "\:30fc", "\:30bf\:5206\:6790"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"AppendTo", "[", 
+     RowBox[{
+     "$Path", ",", 
+      "\"\</home/motchy/Dropbox/home/individual/motchy/data/hobby/computer/\
+programming/languages/Mathematica/lib/\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Import", "[", "\"\<motchyMath`\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"labelStyle", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Times\>\""}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "12"}], ",", " ", "Black"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+     "\:5358\:72ec\:30d7\:30ec\:30a4\:30e4", "\:30fc", 
+      "\:3068\:306e\:6bd4\:8f03"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Print", "[", 
+       "\"\<\:5358\:72ec\:30d7\:30ec\:30a4\:30e4\:30fc\:3068\:5354\:529b\:30b7\
+\:30b9\:30c6\:30e0\:5e73\:5747\>\"", "]"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"T", "=", 
+        RowBox[{"10", "k"}]}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"T", "=", "10000"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"fp1", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type1/results/K5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"fp2", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"json1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp1", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"json2", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp2", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], ",", "\"\<K5(Type1 loner)\>\""}], "]"}], 
+        ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5(Type1 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], ",", "\"\<K5(Type2 loner)\>\""}], "]"}], 
+        ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5(Type2 sys avg)\>\""}], "]"}]}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"MaxPlotPoints", "\[Rule]", "100"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+        RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Regret(T): sysAvg/loner = \>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}]}], ",", "\"\<(Type1),  \>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}]}], ",", "\"\<(Type2)\>\""}], "]"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"T", "=", 
+        RowBox[{"100", "k"}]}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"T", "=", "100000"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"fp1", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type1/results/K5_uniform-prior_T100k.json\>\""}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"fp2", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_uniform-prior_T100k.json\>\""}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"json1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp1", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"json2", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp2", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], ",", "\"\<K5(Type1 loner)\>\""}], "]"}], 
+        ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5(Type1 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], ",", "\"\<K5(Type2 loner)\>\""}], "]"}], 
+        ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5(Type2 sys avg)\>\""}], "]"}]}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"MaxPlotPoints", "\[Rule]", "100"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+        RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Regret(T): sysAvg/loner = \>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}]}], ",", "\"\<(Type1),  \>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<loner\>\"", "]"}], "[", 
+          RowBox[{"[", "T", "]"}], "]"}]}], ",", "\"\<(Type2)\>\""}], 
+       "]"}]}]}], "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+    "(*", "Type2\:306eRegret\:304c\:30b0\:30e9\:30d5\:306e\:69cb\:9020\:306b\
+\:4f9d\:5b58\:3057\:306a\:3044\:3053\:3068\:3092\:78ba\:304b\:3081\:308b", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"fp1", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"json1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp1", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp2", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_-3diagLines_uniform-prior_T10k.json\>\
+\""}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"json2", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp2", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp3", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/C5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"json3", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp3", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", "\"\<K5(sys avg )\>\""}], 
+         "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5_-3diagLines(sys avg )\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json3", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", "\"\<C5(sys avg )\>\""}], 
+         "]"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+      "Print", "[", 
+       "\"\<\:30b0\:30e9\:30d5\:69cb\:9020\:3068Type2\:306eRegret\>\"", "]"}],
+       "\[IndentingNewLine]", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"MaxPlotPoints", "\[Rule]", "100"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+        RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+    "(*", "\:4e8b\:524d\:5206\:5e03\:3092\:5909\:3048\:305f\:3068\:304d\:306e\
+Regret\:306e\:6539\:5584\:3092\:78ba\:304b\:3081\:308b", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"fp2", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_informative-prior_T10k.json\>\""}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"json2", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp2", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5 uniform prior(sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5 informative prior(sys avg)\>\""}], "]"}]}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+      "Print", "[", 
+       "\"\<\:6709\:76ca\:306a\:4e8b\:524d\:5206\:5e03\:3092\:7528\:3044\:305f\
+\:5834\:5408\:3068\:306e\:6bd4\:8f03\>\"", "]"}], "\[IndentingNewLine]", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"MaxPlotPoints", "\[Rule]", "1000"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+        RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{"(*", "Type1\:3068Type2\:306e\:6bd4\:8f03", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"fp1", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type1/results/K5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"jsonType1K5", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp1", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp2", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type1/results/K5_-3diagLines_uniform-prior_T10k.json\>\
+\""}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"json2", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp2", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp3", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type1/results/C5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"json3", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp3", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp4", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"json4", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp4", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp5", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/K5_-3diagLines_uniform-prior_T10k.json\>\
+\""}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"json5", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp5", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fp6", "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type2/results/C5_uniform-prior_T10k.json\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"json6", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp6", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5(Type1 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5_-3diagLines(Type1 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json3", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<C5(Type1 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json4", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5(Type2 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json5", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5_-3diagLines(Type2 sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json6", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<C5(Type2 sys avg)\>\""}], "]"}]}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+      "Print", "[", "\"\<Type1\:3068Type2\:306e\:6bd4\:8f03\>\"", "]"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"MaxPlotPoints", "\[Rule]", "1000"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+        RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+    "(*", "Type1\:3067\:30b0\:30e9\:30d5\:306b\:3088\:308b\:30b7\:30b9\:30c6\
+\:30e0\:5e73\:5747Regret\:306e\:9055\:3044", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", "\"\<K5(sys avg)\>\""}], 
+         "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", 
+          "\"\<K5_-3diagLines(sys avg)\>\""}], "]"}], ",", 
+        RowBox[{"Labeled", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"json3", "[", "\"\<regret\>\"", "]"}], "[", 
+           "\"\<system average\>\"", "]"}], ",", "\"\<C5(sys avg)\>\""}], 
+         "]"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+       "Print", "[", 
+        "\"\<\:30b0\:30e9\:30d5\:69cb\:9020\:3068Type1\:306eRegret\>\"", 
+        "]"}], "\[IndentingNewLine]", 
+       RowBox[{"ListLinePlot", "[", 
+        RowBox[{"list", ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+         RowBox[{"MaxPlotPoints", "\[Rule]", "1000"}], ",", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+         RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "\:30bf\:30b3\:578b\:30b0\:30e9\:30d5\:3068\:5404\:30a8", "\:30fc", 
+         "\:30b8\:30a7\:30f3\:30c8\:306eRegret"}], "*)"}], 
+       "\[IndentingNewLine]", "fp1"}], "=", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+       "\"\<algorithms/Type1/results/octopus_uniform-prior_T10k.json\>\""}]}],
+      ";", "\[IndentingNewLine]", 
+     RowBox[{"json1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"fp1", ",", "\"\<RawJSON\>\""}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", 
+       RowBox[{"Labeled", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"jsonType1Octopus", "[", "\"\<regret\>\"", "]"}], "[", 
+          "\"\<1\>\"", "]"}], ",", "\"\<central agent\>\""}], "]"}], "}"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "2"}], ",", 
+        RowBox[{"i", "\[LessEqual]", "9"}], ",", 
+        RowBox[{"++", "i"}], ",", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"list", ",", 
+          RowBox[{"Labeled", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"jsonType1Octopus", "[", "\"\<regret\>\"", "]"}], "[", 
+             RowBox[{"ToString", "[", "i", "]"}], "]"}], ",", 
+            RowBox[{"\"\<agent \>\"", "<>", 
+             RowBox[{"ToString", "[", "i", "]"}]}]}], "]"}]}], "]"}]}], "]"}],
+       "\[IndentingNewLine]", 
+      RowBox[{
+      "Print", "[", 
+       "\"\<\:30bf\:30b3\:578b\:30b0\:30e9\:30d5\:3068\:5404\:30a8\:30fc\:30b8\
+\:30a7\:30f3\:30c8\:306eRegret\>\"", "]"}], "\[IndentingNewLine]", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"MaxPlotPoints", "\[Rule]", "1000"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+        RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+        RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"\:5927\:898f\:6a21\:30cd\:30c3\:30c8\:30ef", "\:30fc", 
+     RowBox[{"\:30af\:3067\:306eType1", " ", "vs", " ", "Type2"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"T", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fp1", "=", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<algorithms/Type1/results/Huge_WS_N50_uniform-prior_T10k.json\>\""}]\
+}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"json1", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{"fp1", ",", "\"\<RawJSON\>\""}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.726313189175519*^9, 3.726313295887106*^9}, {
+   3.726313402014923*^9, 3.7263134585677233`*^9}, {3.7263135221433163`*^9, 
+   3.726313869618063*^9}, {3.7263139107042522`*^9, 3.72631395252664*^9}, {
+   3.7263140041432447`*^9, 3.726314006384852*^9}, {3.726314103305458*^9, 
+   3.72631412741805*^9}, {3.726314159274736*^9, 3.726314218528749*^9}, {
+   3.726314251096822*^9, 3.726314406559362*^9}, {3.726314436958747*^9, 
+   3.726314438236004*^9}, {3.726314558989276*^9, 3.7263146073849077`*^9}, {
+   3.7263147369891787`*^9, 3.7263148784853687`*^9}, {3.726314927403666*^9, 
+   3.7263149342621403`*^9}, {3.72631497475255*^9, 3.726315041411676*^9}, {
+   3.726315089063037*^9, 3.7263151634569387`*^9}, {3.7263152085832567`*^9, 
+   3.726315342341576*^9}, {3.7263153804977083`*^9, 3.726315670545312*^9}, {
+   3.726315701258881*^9, 3.7263157689064083`*^9}, {3.726315894856494*^9, 
+   3.726316004083703*^9}, {3.726316051842575*^9, 3.72631632870016*^9}, {
+   3.72649025494912*^9, 3.7264902560694532`*^9}, {3.726571749750046*^9, 
+   3.726571765216175*^9}, {3.726578617218278*^9, 3.726578638792287*^9}, {
+   3.726578673258069*^9, 3.72657872193648*^9}, {3.726578832420988*^9, 
+   3.726578868752486*^9}, {3.726579666797573*^9, 3.726579683492168*^9}, {
+   3.726579790529168*^9, 3.7265798148717003`*^9}, {3.726579850798502*^9, 
+   3.726579922302272*^9}, {3.726579966646941*^9, 3.726580072613103*^9}, {
+   3.726580148859599*^9, 3.7265801546205797`*^9}, {3.726580185227075*^9, 
+   3.72658019509019*^9}, {3.7265802338343678`*^9, 3.726580237272592*^9}, {
+   3.7265804709784307`*^9, 3.726580586578404*^9}, {3.7265806272437067`*^9, 
+   3.726580674240325*^9}, {3.726580722381495*^9, 3.726580855906352*^9}, {
+   3.7265809260430317`*^9, 3.726580962543322*^9}, {3.726581057263441*^9, 
+   3.72658110106391*^9}, {3.726581132250203*^9, 3.726581306860879*^9}, {
+   3.726581362824959*^9, 3.7265813749283237`*^9}, {3.726581460141575*^9, 
+   3.726581462534815*^9}, {3.726581757213806*^9, 3.7265817724829283`*^9}, {
+   3.726581887868984*^9, 3.726581899717786*^9}, {3.726582004307542*^9, 
+   3.7265820291671124`*^9}, {3.726582107415204*^9, 3.726582112514666*^9}, {
+   3.726582150786531*^9, 3.72658215107765*^9}, {3.726582226540457*^9, 
+   3.72658225710091*^9}, {3.7265822914417553`*^9, 3.726582322222909*^9}, {
+   3.726582353886745*^9, 3.726582354000271*^9}, {3.7265824442611628`*^9, 
+   3.726582469828311*^9}, {3.726582559555822*^9, 3.726582628564101*^9}, {
+   3.7265827096346197`*^9, 3.7265827178041162`*^9}, {3.726582758044118*^9, 
+   3.7265829246686497`*^9}, {3.726583040900535*^9, 3.726583121019912*^9}, {
+   3.726584963055337*^9, 3.726584988062458*^9}, {3.7265917771786633`*^9, 
+   3.7265917883291883`*^9}, {3.7265918187771053`*^9, 3.726591869801435*^9}, {
+   3.7265919576923*^9, 3.726591995279955*^9}, {3.72659219499055*^9, 
+   3.7265921989985437`*^9}, 3.7266101733195868`*^9, {3.726610213760181*^9, 
+   3.7266102186907997`*^9}},ExpressionUUID->"faf8e1ef-e51e-498e-a1e2-\
+66eb0b048ee1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fp2", "=", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<algorithms/Type2/results/Huge_WS_N50_uniform-prior_T10k.json\>\""}]}]\
+, ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"json2", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"fp2", ",", "\"\<RawJSON\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"list", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Labeled", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+        "\"\<system average\>\"", "]"}], ",", "\"\<Type1(sysAvg)\>\""}], 
+      "]"}], ",", 
+     RowBox[{"Labeled", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+        "\"\<system average\>\"", "]"}], ",", "\"\<Type2 (sysAvg)\>\""}], 
+      "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"list", ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"MaxPlotPoints", "\[Rule]", "100"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+   RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"list", ",", 
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", "\"\<loner\>\"", 
+       "]"}], ",", "\"\<Type1 (loner)\>\""}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"list", ",", 
+    RowBox[{"Labeled", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", "\"\<loner\>\"", 
+       "]"}], ",", "\"\<Type2 (loner)\>\""}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"list", ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"MaxPlotPoints", "\[Rule]", "100"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<Regret\>\""}], "}"}]}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", "labelStyle"}], ",", 
+   RowBox[{"TicksStyle", "\[Rule]", "Black"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "Large"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Regret(T): sysAvg/loner = \>\"", ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", 
+      "\"\<system average\>\"", "]"}], "[", 
+     RowBox[{"[", "T", "]"}], "]"}], "/", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"json1", "[", "\"\<regret\>\"", "]"}], "[", "\"\<loner\>\"", 
+      "]"}], "[", 
+     RowBox[{"[", "T", "]"}], "]"}]}], ",", "\"\<(Type1),  \>\"", ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", 
+      "\"\<system average\>\"", "]"}], "[", 
+     RowBox[{"[", "T", "]"}], "]"}], "/", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"json2", "[", "\"\<regret\>\"", "]"}], "[", "\"\<loner\>\"", 
+      "]"}], "[", 
+     RowBox[{"[", "T", "]"}], "]"}]}], ",", "\"\<(Type2)\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.726591991855405*^9, 3.7265920040233583`*^9}, {
+   3.726592050199369*^9, 3.7265921925855618`*^9}, {3.726592258454111*^9, 
+   3.7265923075738077`*^9}, {3.726592340496448*^9, 3.726592369832254*^9}, 
+   3.726610174356791*^9},ExpressionUUID->"dcd65fb6-3971-4b86-81b9-\
+081f58e31d49"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    TagBox[
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.002777777777777778],
+       AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJw10Q0w1Hkcx/EtKcLY6JSna6WOG6KuhyuZ8zmlmuYqD5cwd5K4NArruajd
+JCQh5+lUl8dNONbz09pda051XDMuwiLudIXKbSfZuaRT/6//zG/+85r39//7
+z//3N/EOdPZdzGKxfObXhztzKeyclyQvMTj1h91H8g+gt71P3bqVhY8eOQbP
+ErOpFLEq49Qg8MIO5+pdVGcsDYWz/8M+Tw0N6lHwlQe5GSg1Ga/mo0B94FC7
+Uoux4yWM3Iw+e6pDm7FfImaSXULXZbEZ516BoXFq7Llmsl8qNugbra84uILx
+jTSsuVSlmK4lW6bDm/003HqG3JmJuomUjZpuOoy3Z+N5ykxJxmVyXw4sHRq3
+nP9zod/E0epKnSlLXcbf3EK0BgpCT5LDc7FGcj5BK5MsyoNG93WnqR7ykzzo
+XYw/OTxItsqH6Vyd2b4X5P/yUcX7eammzkrG3QUYs23Y6f8lWVkIG+3JB/LT
+5JEi8BO5c5+lkw8KUOzpsGdZIXlSAIe6ffKrYvLgbegn9Znx/yLbFoPjpxpX
+NknOvoOtvLy9SZ9+wlh2B2fcreOC15JnSxCWtljDaz/ZpxTVQxwPCw9yeRn2
+Ff2gXRND7vwFJuP/FClyyU/LIbcvm1NrI9tUwDHgktCggxxegaSwb7d+3U02
+FeLw5+4H7cfJBUKUdEYodJfpMXaoxJH967o6zMknKhEVNjp0bRM5thI7JpZs
+WbGNbFmFmYfz/+MwuaAK6+/IA2ICyaNVUOZzIqOjyEHV6Om9ELInnXy3Gpyf
+bsj1BWTbGow+KhzQaSS71iDw+eyAr4SsrAGbr5XA7iXn1cKc67r7wGvy21p8
+l/z399OsVYxL6hBrkhzGNSTb1MMzySfFcTM5oh4bjY2PmO4kv6tHYULO2JQT
+GQ3gegUX3PMgdzdgkJuY/CSYbN6IN5dVxmbOkSsb0cWz6K+8Ru5vhJrgmDIh
+m7yoCa7NL+1DbpLdmrBoekNIUxk5vAk855pgayHZuBnV3q+uy35b2L8Zkc72
+wpLH5IFm9CjY7YdGyXYiyLxcnjm9ImeKIN3EiWp5S+4QQT1+syRHZTWdpwhn
+zgs869XIR1sgNnaJ8F1FXi5G61CakdCC7CeG7zabZ7e3k9+JEZFkYZW8n+wo
+wa9XhcUJLuR4CfaOm90Y8iA/ksDKUf/9V8cX3i+BGrfsyoAfY765FOr5tfm/
+c6l/IUWGqi5vZRjZe96T5dUmPJo/LcXr7onS0hjqYinWTE8J1maQ5VKU75gY
+a8iheZVWZOn1HV9bRHZvRUCqpdfienJIK0bT3t8fbqHn77XCvJzXe+IB9aUy
+nG3yMTLtp24qw/iLnru7hqmHyhBX0aG4NUk9UobQx4a7WAqyTAZR7Euz47M0
+/68MnDdZQz8u02ds1YauivsG02zGrL1tuOC/3Cdcj5zQhqGyDx+gj/8BAZLo
+vQ==
+       "]]},
+     Annotation[#, {{Labeled}, Charting`Private`Tag$2269, {1}}]& ], 
+    TagBox[
+     {RGBColor[0.880722, 0.611041, 0.142051], PointSize[0.002777777777777778],
+       AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJw11HkwHFYcB3BHHREJEhGMkXUlxNW4Kkr2G0VoxBnGUGfo1IgwKA3aCG2Z
+KhmJFddsEU3KYhfr3MValaiIhDZaR0ikM44OEclUoyqV7C9v5s2bz3y/b94f
+783Ti0rwi5GRkpKK3plvVslYY57Y8mMmHB1nvmVWAGw9byq5GcngrRkxSC5a
+yWTaKkismgxhitx03hFliXnp+CjgG/moyb3kLLhyFlXuOapKbPw1Fl083GtX
+yKW58LGOM2HEq0mcmI82z5qwtSWycSF2OSzu2+u0T2LDInheDlbWvUl2v4ZC
+vTsT1u/tl1iZhWphoHOaB5lXguFoe/b9LHJQGXq7vtXSvk+uKkO2lj/v9iRZ
+VAFVzRLmnIa6xIuViH28HmRtRdb8ARuelsdKYsm6VeCE7h/XziF/VYWHfgoX
+nUrJ21VgnHKQNeCS7Wog/mtTTvDkXV6DVMV6N678ATrvBqLcDwxyzMg1tUh8
+8bre4BSZ/SNc/ui4lpdIVryFiji+zmI1ufMWlHr8pTeEZEYdFmVanYtWycH1
+6MscfdR0UEPi7npIsX7b9Zk+WZuD6W2mV+n7ZJ8GrAtGeL6B5KRGHK6oz4hO
+Jm82wn1bqcw0hyxugnyFtMVQCfkqF2zG8gmpOjKDh67iy7LB3WRjHgZDTw8p
+9JCZPDT8+Zy/JSIv8DD+IMRRuEA2akaA4YrboRfkwma0fZmkzlA6SPffgqd5
+h31+1icPtiDhjonD1dNk6VYohs7qNAWQbVphl7DnPCuCnNuK41GCjKwLZCs+
+1PPYxR4F5CA+HP4dznlZTC7hg9tUqjbLJm/xMZ8VeobdQk5tg+/8kGzRILml
+Da/KG3xVxsjbbbDfHEscniG7tON588vq3cvk6HYcn/MuuL5KHm/HGYu6qQsy
+mhKbdyDSx0YlQo1c1wHz11yHJEPyqw6ky/XWhFiSIzsxbMpOrz1JXu2Ei378
+U++zZJsuaE8/kk0JJxd0Qf7DD+Jvx5InuzCn0/RQN5W8pxtps/YmIxnkym5Y
+6GsqXC8kGwjQlxY1kV9NzhYgmLWbdanxXV+AJ67hJ8ubyRsCFKzr/aTdQ84T
+4krkjYa5EXKDECw/o+HZcfKYEP+9eZ8T5KM98NqQdo+fJ5f1INjsV0u1Z+S7
+PZgvc16w/Zuc3ov5mZX0WCUtiTX6MLVksJZ7iGzVh39M7IUMfXJtH/xVi8pT
+j0mcdUSEB8WmwruulLuJYPfdFe8hL3K2CDKsS+bcT6hfK0KiWbuH6znysgix
+/sNxRinUV+rHYwHPNuQi5YH9+HjGTfaLfMo5/RB/38EKq6C8ox/CszsfaBVZ
+XYyYyeBwQz45QAxblYii8D7any9GU+mn3b//Qq4TQ7RkGBI6Sl7ayR1VVken
+aL/TACozW+8VLJHPDYCfrDwU9oz6eQM4/zlnoXZDC/8DLrvZCw==
+       "]]},
+     Annotation[#, {{Labeled}, Charting`Private`Tag$2269, {2}}]& ]}, {{
+     GraphicsGroupBox[{
+       {GrayLevel[1], AbsoluteThickness[4], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], CapForm["Butt"], JoinForm[
+        "Round"], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10725.752961537215`, 6.054903168252264}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.054903168252264}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10725.752961537215`, 6.054903168252264}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.054903168252264}]}]}, 
+       {GrayLevel[1], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], EdgeForm[None], 
+        PolygonBox[{
+         Offset[{100., 9.500000000000023}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{100., -9.499999999999977}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{10., -9.499999999999998}, {10725.752961537215`, 
+           6.054903168252264}], 
+          Offset[{10., 9.500000000000002}, {10725.752961537215`, 
+           6.054903168252264}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        EdgeForm[None]}, {}, InsetBox[
+        StyleBox[
+         RotationBox["\<\"Type1(sysAvg)\"\>",
+          BoxRotation->0.],
+         StripOnInput->False,
+         LineColor->GrayLevel[0],
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontFamily->"Times",
+         FontSize->12,
+         FontColor->GrayLevel[0]], 
+        Offset[{55., 1.2212453270876722*^-14}, \
+{10725.752961537215, 6.054903168252264}], {0, 0}]}], GraphicsGroupBox[{
+       {GrayLevel[1], AbsoluteThickness[4], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], CapForm["Butt"], JoinForm[
+        "Round"], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10725.752961537215`, 6.578769323762595}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.578769323762595}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10725.752961537215`, 6.578769323762595}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{10., 2.220446049250313*^-15}, {10725.752961537215`, 
+           6.578769323762595}]}]}, 
+       {GrayLevel[1], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], EdgeForm[None], 
+        PolygonBox[{
+         Offset[{103., 9.500000000000023}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{103., -9.499999999999977}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{10., -9.499999999999998}, {10725.752961537215`, 
+           6.578769323762595}], 
+          Offset[{10., 9.500000000000002}, {10725.752961537215`, 
+           6.578769323762595}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        EdgeForm[None]}, {}, InsetBox[
+        StyleBox[
+         RotationBox["\<\"Type2 (sysAvg)\"\>",
+          BoxRotation->0.],
+         StripOnInput->False,
+         LineColor->GrayLevel[0],
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontFamily->"Times",
+         FontSize->12,
+         FontColor->GrayLevel[0]], 
+        Offset[{56.5, 1.2545520178264269*^-14}, \
+{10725.752961537215, 6.578769323762595}], {0, 0}]}]}, {}}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"t\"", TraditionalForm], 
+    FormBox["\"Regret\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->{{All, 138.75}, {All, All}},
+  ImageSize->Large,
+  LabelStyle->{FontFamily -> "Times", FontSize -> 12, 
+    GrayLevel[0]},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 10000.}, {0, 6.491840000000007}},
+  PlotRangeClipping->False,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic},
+  TicksStyle->GrayLevel[0]]], "Output",
+ CellChangeTimes->{3.7265922009363127`*^9, 3.726610193019718*^9, 
+  3.7266102250045557`*^9},ExpressionUUID->"98bcd478-1dd8-4aa4-ab12-\
+044ebbd9a07d"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    TagBox[
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.002777777777777778],
+       AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJw10Q0w1Hkcx/EtKcLY6JSna6WOG6KuhyuZ8zmlmuYqD5cwd5K4NArruajd
+JCQh5+lUl8dNONbz09pda051XDMuwiLudIXKbSfZuaRT/6//zG/+85r39//7
+z//3N/EOdPZdzGKxfObXhztzKeyclyQvMTj1h91H8g+gt71P3bqVhY8eOQbP
+ErOpFLEq49Qg8MIO5+pdVGcsDYWz/8M+Tw0N6lHwlQe5GSg1Ga/mo0B94FC7
+Uoux4yWM3Iw+e6pDm7FfImaSXULXZbEZ516BoXFq7Llmsl8qNugbra84uILx
+jTSsuVSlmK4lW6bDm/003HqG3JmJuomUjZpuOoy3Z+N5ykxJxmVyXw4sHRq3
+nP9zod/E0epKnSlLXcbf3EK0BgpCT5LDc7FGcj5BK5MsyoNG93WnqR7ykzzo
+XYw/OTxItsqH6Vyd2b4X5P/yUcX7eammzkrG3QUYs23Y6f8lWVkIG+3JB/LT
+5JEi8BO5c5+lkw8KUOzpsGdZIXlSAIe6ffKrYvLgbegn9Znx/yLbFoPjpxpX
+NknOvoOtvLy9SZ9+wlh2B2fcreOC15JnSxCWtljDaz/ZpxTVQxwPCw9yeRn2
+Ff2gXRND7vwFJuP/FClyyU/LIbcvm1NrI9tUwDHgktCggxxegaSwb7d+3U02
+FeLw5+4H7cfJBUKUdEYodJfpMXaoxJH967o6zMknKhEVNjp0bRM5thI7JpZs
+WbGNbFmFmYfz/+MwuaAK6+/IA2ICyaNVUOZzIqOjyEHV6Om9ELInnXy3Gpyf
+bsj1BWTbGow+KhzQaSS71iDw+eyAr4SsrAGbr5XA7iXn1cKc67r7wGvy21p8
+l/z399OsVYxL6hBrkhzGNSTb1MMzySfFcTM5oh4bjY2PmO4kv6tHYULO2JQT
+GQ3gegUX3PMgdzdgkJuY/CSYbN6IN5dVxmbOkSsb0cWz6K+8Ru5vhJrgmDIh
+m7yoCa7NL+1DbpLdmrBoekNIUxk5vAk855pgayHZuBnV3q+uy35b2L8Zkc72
+wpLH5IFm9CjY7YdGyXYiyLxcnjm9ImeKIN3EiWp5S+4QQT1+syRHZTWdpwhn
+zgs869XIR1sgNnaJ8F1FXi5G61CakdCC7CeG7zabZ7e3k9+JEZFkYZW8n+wo
+wa9XhcUJLuR4CfaOm90Y8iA/ksDKUf/9V8cX3i+BGrfsyoAfY765FOr5tfm/
+c6l/IUWGqi5vZRjZe96T5dUmPJo/LcXr7onS0hjqYinWTE8J1maQ5VKU75gY
+a8iheZVWZOn1HV9bRHZvRUCqpdfienJIK0bT3t8fbqHn77XCvJzXe+IB9aUy
+nG3yMTLtp24qw/iLnru7hqmHyhBX0aG4NUk9UobQx4a7WAqyTAZR7Euz47M0
+/68MnDdZQz8u02ds1YauivsG02zGrL1tuOC/3Cdcj5zQhqGyDx+gj/8BAZLo
+vQ==
+       "]]},
+     Annotation[#, {{Labeled}, Charting`Private`Tag$2562, {1}}]& ], 
+    TagBox[
+     {RGBColor[0.880722, 0.611041, 0.142051], PointSize[0.002777777777777778],
+       AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJw11HkwHFYcB3BHHREJEhGMkXUlxNW4Kkr2G0VoxBnGUGfo1IgwKA3aCG2Z
+KhmJFddsEU3KYhfr3MValaiIhDZaR0ikM44OEclUoyqV7C9v5s2bz3y/b94f
+783Ti0rwi5GRkpKK3plvVslYY57Y8mMmHB1nvmVWAGw9byq5GcngrRkxSC5a
+yWTaKkismgxhitx03hFliXnp+CjgG/moyb3kLLhyFlXuOapKbPw1Fl083GtX
+yKW58LGOM2HEq0mcmI82z5qwtSWycSF2OSzu2+u0T2LDInheDlbWvUl2v4ZC
+vTsT1u/tl1iZhWphoHOaB5lXguFoe/b9LHJQGXq7vtXSvk+uKkO2lj/v9iRZ
+VAFVzRLmnIa6xIuViH28HmRtRdb8ARuelsdKYsm6VeCE7h/XziF/VYWHfgoX
+nUrJ21VgnHKQNeCS7Wog/mtTTvDkXV6DVMV6N678ATrvBqLcDwxyzMg1tUh8
+8bre4BSZ/SNc/ui4lpdIVryFiji+zmI1ufMWlHr8pTeEZEYdFmVanYtWycH1
+6MscfdR0UEPi7npIsX7b9Zk+WZuD6W2mV+n7ZJ8GrAtGeL6B5KRGHK6oz4hO
+Jm82wn1bqcw0hyxugnyFtMVQCfkqF2zG8gmpOjKDh67iy7LB3WRjHgZDTw8p
+9JCZPDT8+Zy/JSIv8DD+IMRRuEA2akaA4YrboRfkwma0fZmkzlA6SPffgqd5
+h31+1icPtiDhjonD1dNk6VYohs7qNAWQbVphl7DnPCuCnNuK41GCjKwLZCs+
+1PPYxR4F5CA+HP4dznlZTC7hg9tUqjbLJm/xMZ8VeobdQk5tg+/8kGzRILml
+Da/KG3xVxsjbbbDfHEscniG7tON588vq3cvk6HYcn/MuuL5KHm/HGYu6qQsy
+mhKbdyDSx0YlQo1c1wHz11yHJEPyqw6ky/XWhFiSIzsxbMpOrz1JXu2Ei378
+U++zZJsuaE8/kk0JJxd0Qf7DD+Jvx5InuzCn0/RQN5W8pxtps/YmIxnkym5Y
+6GsqXC8kGwjQlxY1kV9NzhYgmLWbdanxXV+AJ67hJ8ubyRsCFKzr/aTdQ84T
+4krkjYa5EXKDECw/o+HZcfKYEP+9eZ8T5KM98NqQdo+fJ5f1INjsV0u1Z+S7
+PZgvc16w/Zuc3ov5mZX0WCUtiTX6MLVksJZ7iGzVh39M7IUMfXJtH/xVi8pT
+j0mcdUSEB8WmwruulLuJYPfdFe8hL3K2CDKsS+bcT6hfK0KiWbuH6znysgix
+/sNxRinUV+rHYwHPNuQi5YH9+HjGTfaLfMo5/RB/38EKq6C8ox/CszsfaBVZ
+XYyYyeBwQz45QAxblYii8D7any9GU+mn3b//Qq4TQ7RkGBI6Sl7ayR1VVken
+aL/TACozW+8VLJHPDYCfrDwU9oz6eQM4/zlnoXZDC/8DLrvZCw==
+       "]]},
+     Annotation[#, {{Labeled}, Charting`Private`Tag$2562, {2}}]& ], 
+    TagBox[
+     {RGBColor[0.560181, 0.691569, 0.194885], PointSize[0.002777777777777778],
+       AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJwt1AlQlGUYB3CUBGdhogJLCUpCjshAGA1JjP9CrEScqyinHEESCUSGkZDD
+oBwa0IpBCsQtQnItCyw3ewAq0LSIBwUYUYg4yCBZinG02/t8M99885v/O+88
+3/c872cUFsuPWK+mphauvFVPdi042OlLArZyhx3+p2Q/gqYVb4wtmYPlodg2
++MLV9gRr5pI45HN4JvGOe5gVX0HzJT2Hfnsu5V8jmxsyrShzZG5Igc3KP/GT
+9s7MVafxqOZZYHQEj3lHBorFSJna58I8molbuor3RwWutJ8Aftnxca9muTEn
+nUPMxhoD/3B3ynOwRXeR+/PHHswG32Ex5ADfLNmTeSgXWpsMr0/HejHvzMN8
+e2uWhoC8nIftqvrHybgA78BvZX+7eDM3XUSrxsLLLgryaAH+/EB7/VvpfHIh
+ZuaK7LffJLv8gC6dE+9cWSUnFaNwSWdWXL+f+WYJ7tSOBh/3PMDMK8W5Pb95
+ZqWTUQaZkeqFfZjryuAkHla7yyd7lOPGfRfLNSFZuwJeOlrNlVsOMttcQrCq
+n0Lya5VwHVs6GWVwiNniMqJN4tfnV5E5VSj1rdr1k5Yv1VONXn2riW2V5M5q
+TA6UOreMkO/+iBXPrO9j+H7MejWYsjN2TfyD/F4t+g4N2PR6+zPn1CF7L+dO
++SR5sh5bDz7/dqN7ALOgAY3pqf4jQ+RHDRjWjqv5RiuQOUqIupKn1vc8yEVC
+PD27EvHkC3K3EJbKr6ueTuY3YuTa8e7iB2R5I54bVo6zZRDzOhEsynPeXedO
+jhPBTNX/TPKgCPoXJs6n95E3NYGnmt858vkmyDryBDoWh5lnm6DbWq8+E0hO
+bkaQaj4ryEXNeKy5t8CnnsxtQW1hmXHbMrmgBW7/Ds5fNw5m3iBGbnTfamMA
+OUaMCeV05aeR1VvhKEpcbFCQo1tRGCDsmVsla7Zhl69d0zXTEObsNqSN89QT
+nMjiNtRYuVVyPMjB7Qiz7+LnxZGn2lG4M1mMs2S1DuYcckEH2j4KGueJyJxO
+aNcqz3Mf+Wgn6vTq9v3+K3miE+ECZQPnyWudyJqz6jB7QrbrwmdNyoatkW93
+4fDRhBOXDEKZTbrRPxapFvsmObwbp7yWNx+zJfd1gzuTaf7QmezbA80vu4v1
+g8kVPbAakDvWfsKc/LoEV0QPjjWnUh4pwVyX9BXTAnK8BKHK8dcoJZdKsMH6
+osXmWvKEBJyThruP9JLVpVDnpkxdVdD+5lI87v/Q9swv5EQpBLqh8pG/aP2Q
+FDFJoTY+G8OYp6XwvJUwa/oiWUuGoKWSIyJ9sq4M04GrTs8MmZMDZFi4Z3j5
+/g7KT8mQoSwv155cLUOZX9ru2860XipDlOr35k75QxlKVOffl3IjOTQXb7iH
+RVJuLUd2r9Ay5lPKP5ejUrU+mfIMOWpsz3BDUsPwH3sG9zY=
+       "]]},
+     Annotation[#, {{Labeled}, Charting`Private`Tag$2562, {3}}]& ], 
+    TagBox[
+     {RGBColor[0.922526, 0.385626, 0.209179], PointSize[0.002777777777777778],
+       AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJwt1H001XccB/CbGXOaiOWxckiHRTiG1WjexjbP18izuMRhpUlpIWfDskVM
+DygWkec8xEX3Etd16WGhkNPsD6tRtiybyXKmsN/d9/M753d+53U+v+/n+/3+
+fp/P1zAqwTdGgcfjRXO3/MmueccwbdEo75cxR+ZQbFXKKHQ+bYn/+TgBarnu
+s4pJ9syCY1CKuOi5yRPM6V/BelD9dpfYmdkqE4up7zR/WvExM+87GCVkKN7k
+uzKP5GCPnUOPr507851ceFtOGisZejAnnUGsfP4/PJnjzkGgGLBhp683s0sB
+rF8YjCX08ml9RQjeUa85MuDDfLgYrj8+dazK/4z5rUtwN1iMD/DyZVYsxd2H
+Nn/tyiLnliIzX/aPaSN58TIMKmLbZp39mFPL0TmuEmeURr5agY0bJFbFenuZ
+46/ArHFzSPRBslYl4k98Y+lZQ3aowjPrgVYLC3/KVw0XtfUdNfXkqWqkyOcf
+IgtqkKOv+ngnL4D5i1oM9j4vcwgjL9YieqvWAa/zZFkdLEKi7R/dJwvrEd/K
+DdgcSPmuIjuoznbYg+zagBSzlxcmz5OTGuD2g//lhlLy4Uao2Wy0c5gj+zRh
+ak9KUN32IOaqJhQpzWu5gjzUjNamiYgv88ld16DBv1YQc4fs3YIeE27DSsG0
+3hYoy8vLgTzdgt3ZToKnPuSCVsQYxSenFpLrWuEm328leaIVld7QjGwjHxLi
+YOW67jcXyPlC/FYofDvxNblCiEj7R/w85RDmcSGKZrbU/q5DPtqG3A/WeZ3c
+R9Zuh6Hs29rAEvLedhxvvh71dSe5sB31BTGn9g+Tt3VAR/7918iRHbh3NmzV
+WS+UebkDwhcr48lu5Jzr6F4VnlhIJ28S4fRcmqNtM9lKhPwzaql2N8i3RFgy
+XHl5bJ78TIRQrv1yl8k8MYr15A0Uxmwihk5apLW/OvmIGK8nFVRyLMkPxDiS
+Wm3u7El+JYb+/j9DPgonh3Vi1CxGdyqZ3NiJrJAH3dMFZH4X9MrC3x2Ukme7
+kLcSs/Tkb/LZGzCV57PYx6zcjfd0CsdVXMmCblyQ14+APN4N46kgbVEGObgH
+HZojLhMt5Kwe5Djahnd1krdLsJiY8/2TKbK/BGNce5gvkk9K8CrXdE51lXxF
+ghmvKPUglXDm2xJ4Pbx5yEad/KsECnW3PN7XJSf3Qj95vbHph2RpLy6pcgXt
+z5yuKoXyc+nubQfInlIEce1hm0c+LsVUlzhPqZw8JMVA4F3rgVHKtyaFlfz8
+myHv6INfugiZChHs/cw+jHHtxLdg5kn68K/GgtP9Tyi+1oeKLbtiXT6nuJMM
+q/eW/KazKO4vg4Hu0Z80zlE8ToblEq7gL5IbZChJ5A6YHvK4DGV8rsGGabxB
+P9J8Tcqz5yke1g/zn7kJ3hAwn+pHG/f71dUE+A+z0+ck
+       "]]},
+     Annotation[#, {{Labeled}, Charting`Private`Tag$2562, {4}}]& ]}, {{
+     GraphicsGroupBox[{
+       {GrayLevel[1], AbsoluteThickness[4], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], CapForm["Butt"], JoinForm[
+        "Round"], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10794.060553705394`, 2.7915577814459214`}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           2.7915577814459214`}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.283583999999988}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.283583999999988}], 
+          Offset[{0, 0}, {10794.060553705394`, 2.7915577814459214`}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           2.7915577814459214`}]}]}, 
+       {GrayLevel[1], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], EdgeForm[None], 
+        PolygonBox[{
+         Offset[{100., 9.500000000000023}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{100., -9.499999999999977}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{10., -9.499999999999998}, {10794.060553705394`, 
+           2.7915577814459214`}], 
+          Offset[{10., 9.500000000000002}, {10794.060553705394`, 
+           2.7915577814459214`}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        EdgeForm[None]}, {}, InsetBox[
+        StyleBox[
+         RotationBox["\<\"Type1(sysAvg)\"\>",
+          BoxRotation->0.],
+         StripOnInput->False,
+         LineColor->GrayLevel[0],
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontFamily->"Times",
+         FontSize->12,
+         FontColor->GrayLevel[0]], 
+        Offset[{55., 1.2212453270876722*^-14}, \
+{10794.060553705394, 2.7915577814459214}], {0, 0}]}], GraphicsGroupBox[{
+       {GrayLevel[1], AbsoluteThickness[4], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], CapForm["Butt"], JoinForm[
+        "Round"], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10794.060553705394`, 14.74748923642637}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           14.74748923642637}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10208.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10308.333333333334`, 6.491840000000007}], 
+          Offset[{0., 0.}, {10408.333333333334`, 6.491840000000007}], 
+          Offset[{0, 0}, {10794.060553705394`, 14.74748923642637}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           14.74748923642637}]}]}, 
+       {GrayLevel[1], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], EdgeForm[None], 
+        PolygonBox[{
+         Offset[{103., 9.500000000000023}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{103., -9.499999999999977}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{10., -9.499999999999998}, {10794.060553705394`, 
+           14.74748923642637}], 
+          Offset[{10., 9.500000000000002}, {10794.060553705394`, 
+           14.74748923642637}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        EdgeForm[None]}, {}, InsetBox[
+        StyleBox[
+         RotationBox["\<\"Type2 (sysAvg)\"\>",
+          BoxRotation->0.],
+         StripOnInput->False,
+         LineColor->GrayLevel[0],
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontFamily->"Times",
+         FontSize->12,
+         FontColor->GrayLevel[0]], 
+        Offset[{56.5, 1.2545520178264269*^-14}, \
+{10794.060553705394, 14.74748923642637}], {0, 0}]}], GraphicsGroupBox[{
+       {GrayLevel[1], AbsoluteThickness[4], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], CapForm["Butt"], JoinForm[
+        "Round"], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 148.16800000000273`}], 
+          Offset[{0, 0}, {10208.333333333334`, 148.16800000000273`}], 
+          Offset[{0., 0.}, {10308.333333333334`, 148.16800000000273`}], 
+          Offset[{0., 0.}, {10308.333333333334`, 148.16800000000273`}], 
+          Offset[{0., 0.}, {10408.333333333334`, 148.16800000000273`}], 
+          Offset[{0, 0}, {10794.060553705394`, 148.16799853108532`}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           148.16799853108532`}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 148.16800000000273`}], 
+          Offset[{0, 0}, {10208.333333333334`, 148.16800000000273`}], 
+          Offset[{0., 0.}, {10308.333333333334`, 148.16800000000273`}], 
+          Offset[{0., 0.}, {10308.333333333334`, 148.16800000000273`}], 
+          Offset[{0., 0.}, {10408.333333333334`, 148.16800000000273`}], 
+          Offset[{0, 0}, {10794.060553705394`, 148.16799853108532`}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           148.16799853108532`}]}]}, 
+       {GrayLevel[1], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], EdgeForm[None], 
+        PolygonBox[{
+         Offset[{95., 9.500000000000021}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{95., -9.499999999999979}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{10., -9.499999999999996}, {10794.060553705394`, 
+           148.16799853108532`}], 
+          Offset[{10., 9.500000000000004}, {10794.060553705394`, 
+           148.16799853108532`}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        EdgeForm[None]}, {}, InsetBox[
+        StyleBox[
+         RotationBox["\<\"Type1 (loner)\"\>",
+          BoxRotation->0.],
+         StripOnInput->False,
+         LineColor->GrayLevel[0],
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontFamily->"Times",
+         FontSize->12,
+         FontColor->GrayLevel[0]], 
+        Offset[{52.5, 1.1657341758564144*^-14}, \
+{10794.060553705394, 148.16799853108532}], {0, 0}]}], GraphicsGroupBox[{
+       {GrayLevel[1], AbsoluteThickness[4], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], CapForm["Butt"], JoinForm[
+        "Round"], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 128.4708000000006}], 
+          Offset[{0, 0}, {10208.333333333334`, 128.4708000000006}], 
+          Offset[{0., 0.}, {10308.333333333334`, 128.4708000000006}], 
+          Offset[{0., 0.}, {10308.333333333334`, 128.4708000000006}], 
+          Offset[{0., 0.}, {10408.333333333334`, 128.4708000000006}], 
+          Offset[{0, 0}, {10794.060553705394`, 128.4707992667123}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           128.4707992667123}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        BSplineCurveBox[{
+         Offset[{0, 0}, {10208.333333333334`, 128.4708000000006}], 
+          Offset[{0, 0}, {10208.333333333334`, 128.4708000000006}], 
+          Offset[{0., 0.}, {10308.333333333334`, 128.4708000000006}], 
+          Offset[{0., 0.}, {10308.333333333334`, 128.4708000000006}], 
+          Offset[{0., 0.}, {10408.333333333334`, 128.4708000000006}], 
+          Offset[{0, 0}, {10794.060553705394`, 128.4707992667123}], 
+          Offset[{5., 1.1102230246251565`*^-15}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{10., 2.220446049250313*^-15}, {10794.060553705394`, 
+           128.4707992667123}]}]}, 
+       {GrayLevel[1], Opacity[
+         NCache[
+          Rational[2, 3], 0.6666666666666666]], EdgeForm[None], 
+        PolygonBox[{
+         Offset[{95., 9.500000000000021}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{95., -9.499999999999979}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{10., -9.499999999999996}, {10794.060553705394`, 
+           128.4707992667123}], 
+          Offset[{10., 9.500000000000004}, {10794.060553705394`, 
+           128.4707992667123}]}]}, 
+       {RGBColor[0.6666666666666666, 0.6666666666666666, 0.6666666666666666], 
+        EdgeForm[None]}, {}, InsetBox[
+        StyleBox[
+         RotationBox["\<\"Type2 (loner)\"\>",
+          BoxRotation->0.],
+         StripOnInput->False,
+         LineColor->GrayLevel[0],
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontFamily->"Times",
+         FontSize->12,
+         FontColor->GrayLevel[0]], 
+        Offset[{52.5, 1.1657341758564144*^-14}, \
+{10794.060553705394, 128.4707992667123}], {0, 0}]}]}, {}}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"t\"", TraditionalForm], 
+    FormBox["\"Regret\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->{{All, 138.75}, {All, All}},
+  ImageSize->Large,
+  LabelStyle->{FontFamily -> "Times", FontSize -> 12, 
+    GrayLevel[0]},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 10000.}, {0, 148.16800000000273`}},
+  PlotRangeClipping->False,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic},
+  TicksStyle->GrayLevel[0]]], "Output",
+ CellChangeTimes->{3.7265922009363127`*^9, 3.726610193019718*^9, 
+  3.726610225833613*^9},ExpressionUUID->"9b6dbb8a-48d3-4a38-92a4-\
+f0f4e91bb643"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Regret(T): sysAvg/loner = \"\>", "\[InvisibleSpace]", 
+   "0.0774055382835653`", "\[InvisibleSpace]", "\<\"(Type1),  \"\>", 
+   "\[InvisibleSpace]", "0.08130395026899759`", 
+   "\[InvisibleSpace]", "\<\"(Type2)\"\>"}],
+  SequenceForm[
+  "Regret(T): sysAvg/loner = ", 0.0774055382835653, "(Type1),  ", 
+   0.08130395026899759, "(Type2)"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.726592201063455*^9, 3.726610193809657*^9, 
+  3.726610225841447*^9},ExpressionUUID->"124f4285-7818-4d0c-92fd-\
+426dd3a724b1"]
+}, Open  ]]
+},
+Evaluator->"local2",
+WindowSize->{1920, 1051},
+WindowMargins->{{1920, Automatic}, {Automatic, 29}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (2017\:5e749\:670812\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 24988, 587, 2066, "Input",ExpressionUUID->"faf8e1ef-e51e-498e-a1e2-66eb0b048ee1"],
+Cell[CellGroupData[{
+Cell[25571, 611, 3590, 97, 391, "Input",ExpressionUUID->"dcd65fb6-3971-4b86-81b9-081f58e31d49"],
+Cell[29164, 710, 10564, 215, 332, "Output",ExpressionUUID->"98bcd478-1dd8-4aa4-ab12-044ebbd9a07d"],
+Cell[39731, 927, 19794, 389, 329, "Output",ExpressionUUID->"9b6dbb8a-48d3-4a38-92a4-f0f4e91bb643"],
+Cell[59528, 1318, 562, 12, 25, "Print",ExpressionUUID->"124f4285-7818-4d0c-92fd-426dd3a724b1"]
+}, Open  ]]
+}
+]
+*)
+
