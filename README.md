@@ -1,0 +1,2 @@
+# Distributed-ThompthonSampling
+分散型マルチエージェントシステム上でThompson抽出を実行することの検討
